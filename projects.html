@@ -2,7 +2,7 @@
 <html>
   <head>
     <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/computer_explorer_2k-2.png">
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <link rel="stylesheet" href="https://unpkg.com/7.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
@@ -10,25 +10,26 @@
     <style>
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
+        cursor: url("cursor.png"), auto;
       }
+
+     
+      
     </style>
   </head>
- 
-  <body>
-    <div class="window-body">
-      <menu role="tablist">
-  <li role="tab"><a href="index.html">HOME</a></li>
-  <li role="tab"><a href="projects.html">Projects</a></li>
-  <li role="tab"><a href="resources.html">Resources</a></li>
-  <li role="tab"><a href="https://example.com/course" target="_blank">Online Course</a></li>
-  <li role="tab"><a href="links.html">Links</a></li>  
-      </menu>
-      <div class="window" role="tabpanel">
-        <div class="window-body">
-          <p>the tab content</p>
-        </div>
-      </div>
-    </div>
+
+    <section class="tabs">
+  <menu role="tablist" aria-label="Tabs Template">
+    <button role="tab" aria-controls="tab-A" aria-selected="true" aria-haspopup="true" ><a href="index.html">  HOME</a></</button>
+    <button role="tab" aria-controls="tab-B" aria-haspopup="true" ><a href="projects.html">Projects</a></button>
+    <button role="tab" aria-controls="tab-C" aria-haspopup="true" ><a href="resources.html"> <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png"> Resources</a></button>
+    <button role="tab" aria-controls="tab-D" aria-haspopup="true" ><a href="projects.html">Online Course</a></button>
+    <button role="tab" aria-controls="tab-D" aria-haspopup="true" ><a href="projects.html">Links</a></button>
+  </menu>
+  <article role="tabpanel" id="tab-A">Tab A is active</article>
+  <article role="tabpanel" id="tab-B" hidden="">Tab B is active</article>
+  <article role="tabpanel" id="tab-C" hidden="">Tab C is active</article>
+</section>
 
   </body>
 </html>
