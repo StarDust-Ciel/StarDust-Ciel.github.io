@@ -13,6 +13,10 @@
         cursor: url("cursor.png"), auto;
       }
 
+       a {
+      text-decoration: none;
+    }
+
      
       
     </style>
@@ -36,16 +40,14 @@
 
     <section class="tabs">
   <menu role="tablist" aria-label="Tabs Template">
-    <button role="tab" aria-controls="tab-A" aria-selected="true" aria-haspopup="true" ><a href="index.html">  HOME</a></</button>
-    <button role="tab" aria-controls="tab-B" aria-haspopup="true" ><a href="projects.html">Projects</a></button>
-    <button role="tab" aria-controls="tab-C" aria-haspopup="true" ><a href="resources.html"> <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png"> Resources</a></button>
-    <button role="tab" aria-controls="tab-D" aria-haspopup="true" ><a href="projects.html">Online Course</a></button>
-    <button role="tab" aria-controls="tab-D" aria-haspopup="true" ><a href="projects.html">Links</a></button>
+    <a role="tab" aria-selected="true" href="index.html">HOME</a>
+    <a role="tab" href="projects.html">Projects</a>
+    <a role="tab" href="resources.html">Resources</a>
+    <a role="tab" href="online.html">Online Course</a>
+    <a role="tab" href="links.html">Links</a>
   </menu>
-  <article role="tabpanel" id="tab-A">Tab A is active</article>
-  <article role="tabpanel" id="tab-B" hidden="">Tab B is active</article>
-  <article role="tabpanel" id="tab-C" hidden="">Tab C is active</article>
 </section>
+
 
 
 
