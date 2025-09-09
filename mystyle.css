@@ -1,0 +1,11 @@
+#buttons
+{border: 2px solid black;
+ color: black;
+ background: white;
+ width: 200px;
+ text-align: center;
+ text-transform: uppercase;
+ font-family: OCR A Std, monospace;
+ font-weight: bold;}
+
+#mobring #basic a, #mobring #small a {color: black; text-decoration: underline;} #mobring #basic a:hover,  #mobring #small a:hover, #mobring #puter a:hover {color: #d52991;}
