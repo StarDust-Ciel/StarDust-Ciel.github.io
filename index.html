@@ -23,20 +23,25 @@
         color: black; }
       
        a:active {
-         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto; }
+  cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto;}
 
       h2 { text-align: center;
           color: #254859;
           text-shadow: 2px 2px 4px #000000; }
         
           
-        .img {
-          src: "https://i.pinimg.com/736x/54/88/29/5488293f3156b0599819a9a000c795bd.jpg"
-          border: 2px solid black;
-          border-style: inset;
-          border-radius: 5px;
-          margin: auto;
-          padding: auto; }
+        .banner img {
+          display: block;
+  margin: 10px auto;
+  border: 2px inset black;
+  border-radius: 5px;
+  max-width: 100%;
+}
+      ul[role="menubar"] img {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
 
      
       
@@ -45,13 +50,21 @@
   <ul role="menubar" >
   <li role="menuitem" tabindex="0" aria-haspopup="true" > <a href="index.html">  HOME</a></li>
   <li role="menuitem" tabindex="0" aria-haspopup="true" > <a href="projects.html">Projects</a></li>
-  <li role="menuitem" tabindex="0" aria-haspopup="true" > <a href="resources.html"> <img margin-right= 4px src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" > Resources</a></li>
+  <li role="menuitem">
+  <a href="resources.html">
+    <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" alt="">
+    Resources
+  </a>
+</li>
+
   <li role="menuitem" tabindex="0" aria-haspopup="true" ><a href="links.html">Links</a></</li>
   <li role="menuitem" tabindex="0" aria-haspopup="true" ><a href="links.html">Links</a></</li>
 </ul>
 
-  <div class="img">
-    <h2>My Portal</h2> </div>
+  <div class="banner"> <h2>My Portal</h2>
+  <img src="https://i.pinimg.com/736x/54/88/29/5488293f3156b0599819a9a000c795bd.jpg" alt="banner image">
+</div>
+
   
   <div role="tooltip">This website is a portoflio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic, I am still learning and will never get past editing this website. </div>
     
