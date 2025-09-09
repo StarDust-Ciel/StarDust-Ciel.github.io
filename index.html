@@ -8,21 +8,16 @@
     <title>MyPortal</title>
     <link href="/style.css" rel="stylesheet" type="text/css" media="all">
     <style>
-      /* Body background and cursor */
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
-        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
-        font-family: "MS PGothic", monospace;
-        margin: 0;
-        padding: 20px;
-      }
+        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;}
+      /* font-family: "MS PGothic", monospace; margin: 0; padding: 20px; */
+      
 
-      /* Force cursor everywhere (override 7.css) */
       body, a, li, ul, img {
-        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
-      }
+        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;}
 
-      /* Menu bar styling */
+      
       ul[role="menubar"] {
         display: flex;
         gap: 4px;
@@ -43,28 +38,15 @@
         padding: 4px 10px;
         text-decoration: none;
         color: black;
-        background: white;
-        border: 2px solid black;
-        font-weight: bold;
         border-radius: 2px;
       }
 
-      /* Hover effect for links (Win98 style) */
       ul[role="menubar"] a:hover {
-        background: #000080;
-        color: white;
+        color: black;
       }
 
-      /* Banner image under menu */
-      .banner {
-        display: block;
-        margin: 10px auto;
-        border: 2px inset black;
-        border-radius: 5px;
-        max-width: 600px;
-      }
+      .banner {border: 2px solid black; border-style: inset; border-radius: 5px; margin: auto; padding: auto; }
 
-      /* Centered title */
       h2 {
         text-align: center;
         color: #254859;
@@ -72,17 +54,7 @@
         margin: 10px 0;
       }
 
-      /* Tooltip / description */
-      [role="tooltip"] {
-        display: block;
-        margin: 20px auto;
-        padding: 10px;
-        width: 80%;
-        max-width: 700px;
-        background: #fff;
-        border: 2px solid black;
-        border-radius: 4px;
-      }
+    
 
       /* Align icons inside menu links */
       ul[role="menubar"] img {
