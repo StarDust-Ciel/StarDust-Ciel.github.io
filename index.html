@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
     <style>
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
@@ -22,9 +21,11 @@
       /* Menu bar */
       ul[role="menubar"] {
         display: flex;
+        flex-wrap: wrap;       /* allow wrapping on small screens */
         gap: 4px;
         list-style: none;
         padding: 0;
+        margin: 0;
         justify-content: center;
       }
 
@@ -52,12 +53,11 @@
         border-style: inset;
         border-radius: 5px;
         padding: 5%;
-       /* margin: 0 auto 8px auto; padding: 20px; max-width: 600px; */
-
         background-image: url("https://i.pinimg.com/736x/54/88/29/5488293f3156b0599819a9a000c795bd.jpg");
         background-size: cover;
         background-position: center;
         text-align: center;
+        margin-bottom: 10px;
       }
 
       .banner h1 {
@@ -66,100 +66,82 @@
         margin: 0;
       }
 
-      
       /* Fix icons alignment */
       ul[role="menubar"] img {
         vertical-align: middle;
       }
 
-      /* Create three unequal columns that floats next to each other */
-.column {
-  float: left;
-  padding: 10px;
-  height: 300px; /* Should be removed. Only for demonstration */
-}
+      /* Column layout */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
 
-/* Left and right column */
-.column.side.left {
-  width: 25%;
-}
-.column.side.right {
-  width: 25%;
-}
+      .column {
+        padding: 10px;
+        box-sizing: border-box;
+      }
 
-/* Middle column */
-.column.middle {
-  width: 50%;
-}
+      .column.side {
+        width: 25%;
+      }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+      .column.middle {
+        width: 50%;
+      }
 
-/* Style the footer */
-.footer {
-  background-color: #f1f1f1;
-  padding: 10px;
-  text-align: center;
-}
+      .footer {
+        background-color: #f1f1f1;
+        padding: 10px;
+        text-align: center;
+      }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  .column.side, .column.middle {
-    width: 100%;
-  }
-  
+      /* Responsive layout */
+      @media (max-width: 600px) {
+        .column.side,
+        .column.middle {
+          width: 100%;
+        }
+      }
     </style>
   </head>
 
   <body>
-
     <!-- Menu bar -->
     <ul role="menubar">
-      <li role="menuitem">
-        <a href="index.html">Home</a>
-      </li>
-      <li role="menuitem">
-        <a href="projects.html">Projects</a>
-      </li>
+      <li role="menuitem"><a href="index.html">Home</a></li>
+      <li role="menuitem"><a href="projects.html">Projects</a></li>
       <li role="menuitem">
         <a href="resources.html">
           <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" alt="Resources Icon" width="16" height="16">
           Resources
         </a>
       </li>
-      <li role="menuitem">
-        <a href="links.html">Links</a>
-      </li>
-      <li role="menuitem">
-        <a href="online.html">Online Courses</a>
-      </li>
+      <li role="menuitem"><a href="links.html">Links</a></li>
+      <li role="menuitem"><a href="online.html">Online Courses</a></li>
     </ul>
 
     <!-- Banner with title inside -->
     <div class="banner">
       <h1>My Portal</h1>
     </div>
+
+    <!-- Three-column layout -->
     <div class="row">
-  <div role="tooltip" class="column side left" style="background-color:#aaa;">This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
-    </div>
-</div>
-  <div class="column middle" style="background-color:#bbb;">Column</div>
-  <div class="column side right" style="background-color:#ccc;">Column</div>
-</div>
+      <div class="column side left" style="background-color:#aaa;">
+        <div role="tooltip">
+          This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
+        </div>
+      </div>
 
-<div class="footer">
-  <p>Footer</p>
-</div>
+      <div class="column middle" style="background-color:#bbb;">Main Content Area</div>
 
-    <!--  <div role="tooltip" class="column.side">
-      This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
+      <div class="column side right" style="background-color:#ccc;">Right Sidebar</div>
     </div>
- -->
-   
+
+    <div class="footer">
+      <p>Footer</p>
+    </div>
   </body>
 </html>
 
