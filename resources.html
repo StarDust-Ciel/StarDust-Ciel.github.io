@@ -6,30 +6,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
     <style>
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
         cursor: url("cursor.png"), auto;
       }
-
-     
-      
     </style>
   </head>
-
+  <body>
     <section class="tabs">
-  <menu role="tablist" aria-label="Tabs Template">
-    <button role="tab" aria-controls="tab-A" aria-selected="true">css Framework</button>
-    <button role="tab" aria-controls="tab-B" aria-selected="false">Tab B</button>
-    <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button>
-    <button role="tab" aria-controls="tab-D" disabled="" aria-selected="false">Tab D</button>
-  </menu>
-  <article role="tabpanel" id="tab-A"> <a href= "https://khang-nd.github.io/7.css" ></a> </article>
-  <article role="tabpanel" id="tab-B" hidden="true">Tab B is active</article>
-  <article role="tabpanel" id="tab-C" hidden="true">Tab C is active</article>
-  <article role="tabpanel" id="tab-D" hidden="true">Tab D is inactive</article>
-</section>
+      <menu role="tablist" aria-label="Tabs Template">
+        <button role="tab" aria-controls="tab-A" aria-selected="true">css Framework</button>
+        <button role="tab" aria-controls="tab-B" aria-selected="false">Tab B</button>
+        <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button>
+        <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button>
+      </menu>
 
+      <article role="tabpanel" id="tab-A">
+        <a href="https://khang-nd.github.io/7.css" target="_blank">Go to 7.css Framework</a>
+      </article>
+      <article role="tabpanel" id="tab-B" hidden>Tab B is active</article>
+      <article role="tabpanel" id="tab-C" hidden>Tab C is active</article>
+      <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article>
+    </section>
+
+    <script>
+      const tabs = document.querySelectorAll('[role="tab"]');
+      const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          // Reset all tabs
+          tabs.forEach(t => t.setAttribute("aria-selected", "false"));
+          tabPanels.forEach(p => p.hidden = true);
+
+          // Activate clicked tab
+          tab.setAttribute("aria-selected", "true");
+          const target = document.getElementById(tab.getAttribute("aria-controls"));
+          target.hidden = false;
+        });
+      });
+    </script>
   </body>
 </html>
