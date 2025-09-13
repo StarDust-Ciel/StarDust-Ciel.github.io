@@ -75,7 +75,7 @@
       .row {
         display: flex;
         justify-content: center;
-        gap: 20px; /* space between columns */
+        gap: 10px; /* space between columns */
         flex-wrap: wrap;
         margin: 20px auto;
         max-width: 1200px;
@@ -119,19 +119,21 @@
     <!-- Three Columns -->
     <div class="row">
       <!-- Left Column -->
-      <div class="column">
+      <div class="column" style= "width: 25%;>
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Left</span></div>
             <div class="window-body has-space">
-              Left Column Content
+              <div role="tooltip">
+                This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Middle Column -->
-      <div class="column">
+      <div class="column" style= "width: 50%;>
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Middle</span></div>
@@ -143,14 +145,12 @@
       </div>
 
       <!-- Right Column -->
-      <div class="column">
+      <div class="column" style= "width: 25%;>
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Right</span></div>
             <div class="window-body has-space">
-              <div role="tooltip">
-                This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
-              </div>
+              
             </div>
           </div>
         </div>
