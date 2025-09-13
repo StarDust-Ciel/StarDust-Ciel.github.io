@@ -52,18 +52,7 @@
       }
 
       /* Banner */
-      .banner {
-        border: 2px solid black;
-        border-style: inset;
-        border-radius: 5px;
-        padding: 5%;
-        background-image: url("https://i.pinimg.com/736x/54/88/29/5488293f3156b0599819a9a000c795bd.jpg");
-        background-size: cover;
-        background-position: center;
-        text-align: center;
-        margin: 20px auto;
-        max-width: 800px;
-      }
+      .banner { border: 2px solid black; border-style: inset; border-radius: 5px; padding: 5%; background-image: url("https://i.pinimg.com/originals/3d/32/a3/3d32a38925c12ca669fafedffe38680b.gif"); background-size: cover; background-position: center; text-align: center; margin-bottom: 10px; margin-left:30px; margin-right:30px; }
 
       .banner h1 {
         color: black;
@@ -75,16 +64,20 @@
       .row {
         display: flex;
         justify-content: center;
-        gap: 10px; /* space between columns */
+        gap: 15px; /* space between columns */
         flex-wrap: wrap;
         margin: 20px auto;
         max-width: 1200px;
       }
 
-      .column {
+      .column.side {
         flex: 1;
-        min-width: 250px;
-        max-width: 350px;
+        width:25%;
+      }
+
+      .column{
+         flex: 1;
+        width:50%;
       }
 
       .window {
@@ -119,7 +112,7 @@
     <!-- Three Columns -->
     <div class="row">
       <!-- Left Column -->
-      <div class="column" style= "width: 25%;>
+      <div class="column side" >
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Left</span></div>
@@ -133,7 +126,7 @@
       </div>
 
       <!-- Middle Column -->
-      <div class="column" style= "width: 50%;>
+      <div class="column" >
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Middle</span></div>
@@ -145,7 +138,7 @@
       </div>
 
       <!-- Right Column -->
-      <div class="column" style= "width: 25%;>
+      <div class="column side" style= "width: 25%;>
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Right</span></div>
