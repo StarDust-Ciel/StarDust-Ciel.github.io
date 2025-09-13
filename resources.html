@@ -50,6 +50,75 @@
       ul[role="menubar"] img {
         vertical-align: middle;
       }
-    </style>
-  </head>
-<body> <!-- Menu bar --> <ul role="menubar"> <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" alt="Home Icon" width="16" height="16">Home</a></li> <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" alt="Projects Icon" width="16" height="16">Projects</a></li> <li role="menuitem"> <a href="resources.html"> <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" alt="Resources Icon" width="16" height="16"> Resources </a> </li> <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" alt="Links Icon" width="16" height="16">Links</a></li> <li role="menuitem"><a href="online.html"> <img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" alt="Courses Icon" width="16" height="16">Online Courses</a></li> </ul> < div class="container" > <section class="tabs"> <menu role="tablist" aria-label="Tabs Template"> <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button> <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button> <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button> <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button> </menu> <article role="tabpanel" id="tab-A"> <ul role="menu" style="width: 200px"> <li role="menuitem">The CSS framework used in this website to give a Windows7 old web look to it: <a href="https://khang-nd.github.io/7.css" target="_blank"> 7.css Framework</a></li> <li role="menuitem"> The Windows icons used: <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a></li> <li role="menuitem">The website I got inspiration from and some resources: <a href="https://caitsith.neocities.org/myhomepage" target="_blank"> caitsith.neocities.org</a></li> </ul> </article> <article role="tabpanel" id="tab-B" hidden> <ul role="menu" style="width: 200px"> <li role="menuitem">The Energy Center research in Hamad Bin Khalifa University : <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li> <li role="menuitem">Qatar's National Renewable Energy Strategy : <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li> </ul> <article role="tabpanel" id="tab-C" hidden></article> </article> <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article> </section> <script> const tabs = document.querySelectorAll('[role="tab"]'); const tabPanels = document.querySelectorAll('[role="tabpanel"]'); tabs.forEach(tab => { tab.addEventListener("click", () => { // Reset all tabs tabs.forEach(t => t.setAttribute("aria-selected", "false")); tabPanels.forEach(p => p.hidden = true); // Activate clicked tab tab.setAttribute("aria-selected", "true"); const target = document.getElementById(tab.getAttribute("aria-controls")); target.hidden = false; }); }); </script> </div> </body> </html>
+
+      .column.middle {
+        flex: 2;
+        max-width: 50%;
+      }
+
+ .window {
+        height: 100%;
+      }
+
+@media (max-width: 900px) 
+{ .column.middle {
+          max-width: 100%;
+        }
+      }
+
+    </style> 
+  <body>
+    <div class="column middle">
+        <div class="background">
+          <div class="window glass active" style="max-width: 100%">
+            <div class="title-bar"><span class="title">Middle</span></div>
+            <div class="window-body has-space">
+    <section class="tabs">
+      <menu role="tablist" aria-label="Tabs Template">
+        <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
+        <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
+        <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button>
+        <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button>
+      </menu>
+
+      <article role="tabpanel" id="tab-A">
+        <ul>
+        <li> The CSS framework used in this website to give a Windows7 old web look to it: <a href="https://khang-nd.github.io/7.css" target="_blank"> 7.css Framework</a></li>
+        <li> The Windows icons used: <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a></li> 
+        <li>The website I got inspiration from and some resources: <a href="https://caitsith.neocities.org/myhomepage" target="_blank"> caitsith.neocities.org</a></li>
+        </ul>
+      </article>
+      <article role="tabpanel" id="tab-B" hidden>
+      <ul>
+      <li>The Energy Center research in Hamad Bin Khalifa University : <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li> 
+      <li>Qatar's National Renewable Energy Strategy : <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li> </ul>
+      </article>
+        <article role="tabpanel" id="tab-C" hidden>Tab C is active</article>
+      <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article>
+    </section>
+</div>
+          </div>
+        </div>
+      </div>
+
+
+    
+    <script>
+      const tabs = document.querySelectorAll('[role="tab"]');
+      const tabPanels = document.querySelectorAll('[role="tabpanel"]');
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+          // Reset all tabs
+          tabs.forEach(t => t.setAttribute("aria-selected", "false"));
+          tabPanels.forEach(p => p.hidden = true);
+
+          // Activate clicked tab
+          tab.setAttribute("aria-selected", "true");
+          const target = document.getElementById(tab.getAttribute("aria-controls"));
+          target.hidden = false;
+        });
+      });
+    </script>
+  </body>
+</html>
