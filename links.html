@@ -53,12 +53,11 @@
 
 
       :root {
-  --backgroundColor: rgba(246, 241, 209);
-  --colorShadeA: rgb(106, 163, 137);
-  --colorShadeB: rgb(121, 186, 156);
-  --colorShadeC: rgb(150, 232, 195);
-  --colorShadeD: rgb(187, 232, 211);
-  --colorShadeE: rgb(205, 255, 232);
+  --colorShadeA: rgb(59, 124, 173);
+  --colorShadeB: rgb(44, 93, 130);
+  --colorShadeC: rgb(26, 55, 77);
+  --colorShadeD: rgb(76, 108, 133);
+  --colorShadeE: rgb(116, 161, 196);
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
@@ -69,21 +68,10 @@
 *::after {
   box-sizing: border-box;
 }
-body {
-  font-family: "OpenSans", sans-serif;
-  font-size: 1rem;
-  line-height: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  min-height: 100vh;
-  background: var(--backgroundColor);
-}
+
 button {
-  position: relative;
+  position: center;
   display: inline-block;
-  cursor: pointer;
   outline: none;
   border: 0;
   vertical-align: middle;
@@ -117,25 +105,30 @@ button.big-button::before {
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
   transform: translate3d(0, 0.75em, -1em);
   transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  text-decoration: none;
 }
 
 button.big-button:hover {
   background: var(--colorShadeD);
   transform: translate(0, 0.375em);
+  text-decoration: none;
 }
 
 button.big-button:hover::before {
   transform: translate3d(0, 0.75em, -1em);
+  text-decoration: none;
 }
 
 button.big-button:active {
   transform: translate(0em, 0.75em);
+  text-decoration: none;
 }
 
 button.big-button:active::before {
   transform: translate3d(0, 0, -1em);
 
   box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
+  text-decoration: none;
 }
 
     </style>
