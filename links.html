@@ -3,11 +3,10 @@
   <head>
     <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/computer_explorer_2k-2.png">
     <link rel="stylesheet" href="https://unpkg.com/7.css">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
     <style>
-      /* keep your background + custom cursor */
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
@@ -15,21 +14,47 @@
         padding: 0;
       }
 
-      /* force custom cursor everywhere important (buttons, links, images, list items) */
       body, a, li, ul, img, button {
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
       }
 
-      /* remove underlines globally on hover / active */
-      a, a:hover, a:active {
+      a {
         text-decoration: none !important;
+        color: inherit;
       }
 
       /* Menu bar */
+      ul[role="menubar"] {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+      }
 
-      /* Menu bar */ ul[role="menubar"] { display: flex; flex-wrap: wrap; gap: 4px; list-style: none; padding: 0; margin: 0; justify-content: center; } ul[role="menubar"] li { display: inline-block; } ul[role="menubar"] a { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; text-decoration: none; color: black; border-radius: 2px; } ul[role="menubar"] a:hover { color: black; } ul[role="menubar"] img {
+      ul[role="menubar"] li {
+        display: inline-block;
+      }
 
-      /* ------- your button styles (only fixed position and some responsive helpers) ------- */
+      ul[role="menubar"] a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 10px;
+        color: black;
+        border-radius: 2px;
+      }
+
+      ul[role="menubar"] a:hover {
+        color: black;
+      }
+
+      ul[role="menubar"] img {
+        vertical-align: middle;
+      }
+
       :root {
         --colorShadeA: rgb(59, 124, 173);
         --colorShadeB: rgb(44, 93, 130);
@@ -38,27 +63,17 @@
         --colorShadeE: rgb(116, 161, 196);
       }
 
-      @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
-      * { box-sizing: border-box; }
-      *::before, *::after { box-sizing: border-box; }
-
-      /* IMPORTANT: fixed from "position: center" to "position: relative" */
       button {
-        position: relative;
         display: inline-block;
         outline: none;
         border: 0;
-        vertical-align: middle;
-        text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: var(--colorShadeA);
         font-weight: 700;
         text-transform: uppercase;
         font-family: inherit;
-        background: transparent; /* background handled by .big-button */
       }
 
-      /* main big-button styles (kept as you had them) */
       button.big-button {
         padding: 1em 2em;
         border: 2px solid var(--colorShadeA);
@@ -66,8 +81,10 @@
         background: var(--colorShadeE);
         transform-style: preserve-3d;
         transition: all 175ms cubic-bezier(0, 0, 1, 1);
-        box-sizing: border-box;
+        position: relative;
+        margin: 0.5em;
       }
+
       button.big-button::before {
         position: absolute;
         content: "";
@@ -75,8 +92,6 @@
         height: 100%;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
         background: var(--colorShadeC);
         border-radius: inherit;
         box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.75em 0 0 var(--colorShadeA);
@@ -88,65 +103,31 @@
         background: var(--colorShadeD);
         transform: translate(0, 0.375em);
       }
-      button.big-button:hover::before {
-        transform: translate3d(0, 0.75em, -1em);
-      }
+
       button.big-button:active {
         transform: translate(0em, 0.75em);
       }
+
       button.big-button:active::before {
         transform: translate3d(0, 0, -1em);
         box-shadow: 0 0 0 2px var(--colorShadeB), 0 0.25em 0 0 var(--colorShadeB);
       }
 
-      /* ---------- center + responsiveness for the buttons ---------- */
-      /* wrapper that centers and allows wrap on small screens */
-      .button-row {
+      /* Center buttons */
+      .button-container {
         display: flex;
-        justify-content: center;
-        gap: 12px;
         flex-wrap: wrap;
-        padding: 12px;
-      }
-
-      /* allow buttons to shrink/grow; on small screens they become full-width */
-      .big-button {
-        flex: 0 1 auto;
-        min-width: 120px;
-      }
-
-      /* anchor inside button: make it fill the button area and remove underline */
-      .big-button > a {
-        display: inline-flex;
-        align-items: center;
         justify-content: center;
-        width: 100%;
-        height: 100%;
-        color: inherit;
-        text-decoration: none !important;
-        pointer-events: auto;
-      }
-
-      /* preserve custom cursor on these interactive states too */
-      button, button:hover, button:active,
-      .big-button > a, .big-button > a:hover, .big-button > a:active {
-        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
-        text-decoration: none !important;
-      }
-
-      /* responsive: full width buttons on narrow viewports */
-      @media (max-width: 600px) {
-        .big-button {
-          flex: 1 1 100%;
-          max-width: 420px; /* optional cap */
-        }
-        .button-row { padding-left: 8px; padding-right: 8px; }
+        align-items: center;
+        margin-top: 20px;
+        text-align: center;
       }
     </style>
   </head>
 
   <body>
-    <!-- Menu bar (unchanged) -->
+
+    <!-- Menu bar -->
     <ul role="menubar">
       <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
       <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Projects</a></li>
@@ -155,19 +136,12 @@
       <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
     </ul>
 
-    <!-- buttons centered + responsive -->
-    <div class="button-row" role="navigation" aria-label="quick actions">
-      <button class="big-button">
-        <a href="https://www.linkedin.com/in/marwa-benasla-50ab94380/" target="_blank" rel="noopener">Linkedin</a>
-      </button>
-
-      <button class="big-button">
-        <a href="#" onclick="return false;">push</a>
-      </button>
-
-      <button class="big-button">
-        <a href="#" onclick="return false;">me</a>
-      </button>
+    <!-- Centered buttons -->
+    <div class="button-container">
+      <button class="big-button" onclick="window.location.href='https://www.linkedin.com/in/marwa-benasla-50ab94380/'">Linkedin</button>
+      <button class="big-button">Push</button>
+      <button class="big-button">Me</button>
     </div>
+
   </body>
 </html>
