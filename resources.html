@@ -3,158 +3,53 @@
   <head>
     <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/computer_explorer_2k-2.png">
     <link rel="stylesheet" href="https://unpkg.com/7.css">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
-
     <style>
-      /* keep your cursor + bg as before */
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
         margin: 0;
         padding: 0;
       }
-      body, a, li, ul, img { cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important; }
 
-      /* container centered for tabs (you asked for centered container) */
-      .container {
-        width: 60%;
-        max-width: 900px;
-        margin: 18px auto;
+      body, a, li, ul, img {
+        cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
       }
 
-      /* --- TABLIST: centered + flexible --- */
-      .tabs > menu[role="tablist"] {
+      /* Menu bar */
+      ul[role="menubar"] {
         display: flex;
-        flex-wrap: wrap;           /* flexible on small screens */
-        gap: 8px;
-        justify-content: center;   /* center in container */
-        align-items: center;
-        margin: 0;                 /* remove extra margin from framework */
+        flex-wrap: wrap;
+        gap: 4px;
+        list-style: none;
         padding: 0;
-        list-style: none;
-      }
-
-      /* remove any unwanted spacing added by the framework */
-      .tabs > menu[role="tablist"] button[role="tab"] {
-        margin: 0 !important;
-        padding: 6px 10px !important;
-        line-height: 1 !important;
-      }
-
-      /* ensure the tab panels sit directly under the tablist (no gap) */
-      .tabs > article[role="tabpanel"] {
-        margin: 0 !important;
-        padding-top: 6px !important; /* tiny gap so content isn't jammed; change to 0 if you want none */
-      }
-
-      /* remove default list spacing inside panels and keep items inline */
-      .tabs [role="tabpanel"] ul {
-        list-style: none;
         margin: 0;
-        padding: 0;
+        justify-content: center;
       }
 
-      /* key: keep the description text and its link on the same line */
-      .tabs [role="tabpanel"] li {
-        display: inline-flex;      /* same line */
-        align-items: center;
-        gap: 8px;
-        white-space: nowrap;       /* force same-line (will overflow if too long) */
-        margin-bottom: 6px;
-      }
-
-      /* allow the link part to look normal and be clickable */
-      .tabs [role="tabpanel"] a {
+      ul[role="menubar"] li {
         display: inline-block;
       }
 
-      /* small responsive touch: allow wrapping of the whole item on tiny screens */
-      @media (max-width: 520px) {
-        .tabs [role="tabpanel"] li { white-space: normal; } /* allow wrap on very small screens */
-        .container { width: 92%; }
+      ul[role="menubar"] a {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 10px;
+        text-decoration: none;
+        color: black;
+        border-radius: 2px;
+      }
+
+      ul[role="menubar"] a:hover {
+        color: black;
+      }
+
+      ul[role="menubar"] img {
+        vertical-align: middle;
       }
     </style>
   </head>
-
-  <body>
-    <!-- keep your menu bar as-is (unchanged) -->
-    <ul role="menubar">
-      <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
-      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Projects</a></li>
-      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
-      <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
-      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
-    </ul>
-
-    <!-- centered container for tabs -->
-    <div class="container">
-      <section class="tabs">
-        <menu role="tablist" aria-label="Tabs Template">
-          <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
-          <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
-          <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button>
-          <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button>
-        </menu>
-
-        <article role="tabpanel" id="tab-A">
-          <ul role="menu">
-            <li role="menuitem">
-              The CSS framework used in this website to give a Windows7 old web look to it:
-              <a href="https://khang-nd.github.io/7.css" target="_blank">7.css Framework</a>
-            </li>
-            <li role="menuitem">
-              The Windows icons used:
-              <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a>
-            </li>
-            <li role="menuitem">
-              The website I got inspiration from and some resources:
-              <a href="https://caitsith.neocities.org/myhomepage" target="_blank">caitsith.neocities.org</a>
-            </li>
-          </ul>
-        </article>
-
-        <article role="tabpanel" id="tab-B" hidden>
-          <ul role="menu">
-            <li role="menuitem">
-              The Energy Center research in Hamad Bin Khalifa University:
-              <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a>
-            </li>
-            <li role="menuitem">
-              Qatar's National Renewable Energy Strategy:
-              <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a>
-            </li>
-          </ul>
-        </article>
-
-        <article role="tabpanel" id="tab-C" hidden>
-          Tab C content
-        </article>
-
-        <article role="tabpanel" id="tab-D" hidden>
-          Tab D is inactive
-        </article>
-      </section>
-    </div>
-
-    <script>
-      // tab behaviour (unchanged)
-      const tabs = document.querySelectorAll('[role="tab"]');
-      const tabPanels = document.querySelectorAll('[role="tabpanel"]');
-
-      tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-          // Reset
-          tabs.forEach(t => t.setAttribute("aria-selected", "false"));
-          tabPanels.forEach(p => p.hidden = true);
-
-          // Activate clicked tab
-          tab.setAttribute("aria-selected", "true");
-          const target = document.getElementById(tab.getAttribute("aria-controls"));
-          target.hidden = false;
-        });
-      });
-    </script>
-  </body>
-</html>
+<body> <!-- Menu bar --> <ul role="menubar"> <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" alt="Home Icon" width="16" height="16">Home</a></li> <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" alt="Projects Icon" width="16" height="16">Projects</a></li> <li role="menuitem"> <a href="resources.html"> <img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" alt="Resources Icon" width="16" height="16"> Resources </a> </li> <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" alt="Links Icon" width="16" height="16">Links</a></li> <li role="menuitem"><a href="online.html"> <img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" alt="Courses Icon" width="16" height="16">Online Courses</a></li> </ul> < div class="container" > <section class="tabs"> <menu role="tablist" aria-label="Tabs Template"> <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button> <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button> <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button> <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button> </menu> <article role="tabpanel" id="tab-A"> <ul role="menu" style="width: 200px"> <li role="menuitem">The CSS framework used in this website to give a Windows7 old web look to it: <a href="https://khang-nd.github.io/7.css" target="_blank"> 7.css Framework</a></li> <li role="menuitem"> The Windows icons used: <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a></li> <li role="menuitem">The website I got inspiration from and some resources: <a href="https://caitsith.neocities.org/myhomepage" target="_blank"> caitsith.neocities.org</a></li> </ul> </article> <article role="tabpanel" id="tab-B" hidden> <ul role="menu" style="width: 200px"> <li role="menuitem">The Energy Center research in Hamad Bin Khalifa University : <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li> <li role="menuitem">Qatar's National Renewable Energy Strategy : <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li> </ul> <article role="tabpanel" id="tab-C" hidden></article> </article> <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article> </section> <script> const tabs = document.querySelectorAll('[role="tab"]'); const tabPanels = document.querySelectorAll('[role="tabpanel"]'); tabs.forEach(tab => { tab.addEventListener("click", () => { // Reset all tabs tabs.forEach(t => t.setAttribute("aria-selected", "false")); tabPanels.forEach(p => p.hidden = true); // Activate clicked tab tab.setAttribute("aria-selected", "true"); const target = document.getElementById(tab.getAttribute("aria-controls")); target.hidden = false; }); }); </script> </div> </body> </html>
