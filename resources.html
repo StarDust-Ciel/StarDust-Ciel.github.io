@@ -7,17 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyPortal</title>
     <style>
-      body {
+        body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
         margin: 0;
         padding: 0;
+
+        /* Centering with flexbox */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
       }
 
       body, a, li, ul, img {
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
       }
-      
+
       /* Menu bar */
       ul[role="menubar"] {
         display: flex;
@@ -25,8 +31,9 @@
         gap: 4px;
         list-style: none;
         padding: 0;
-        margin: 0;
+        margin: 10px auto;
         justify-content: center;
+        width: 100%;
       }
 
       ul[role="menubar"] li {
@@ -51,20 +58,9 @@
         vertical-align: middle;
       }
 
-      .column.middle {
-        flex: 2;
-        max-width: 50%;
-        position: center;
-      }
-
- .window {
-        height: 100%;
-      }
-
-@media (max-width: 900px) 
-{ .column.middle {
-          max-width: 100%;
-        }
+      .window {
+        max-width: 600px;
+        width: 100%;
       }
 
     </style> 
@@ -88,8 +84,8 @@
       <menu role="tablist" aria-label="Tabs Template">
         <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
         <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
-        <button role="tab" aria-controls="tab-C" aria-selected="false">Tab C</button>
-        <button role="tab" aria-controls="tab-D" disabled aria-selected="false">Tab D</button>
+        <button role="tab" aria-controls="tab-C" aria-selected="false">Tutorials&Codes</button>
+        
       </menu>
 
       <article role="tabpanel" id="tab-A">
@@ -104,8 +100,11 @@
       <li>The Energy Center research in Hamad Bin Khalifa University : <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li> 
       <li>Qatar's National Renewable Energy Strategy : <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li> </ul>
       </article>
-        <article role="tabpanel" id="tab-C" hidden>Tab C is active</article>
-      <article role="tabpanel" id="tab-D" hidden>Tab D is inactive</article>
+        <article role="tabpanel" id="tab-C" hidden>       <ul>
+      <li>Animations and  effects : <a href="https://prismic.io/guides/css-animations" target="_blank">Css Animation Collection</a></li> 
+      <li>Tutorials : <a href="https://www.w3schools.com/" target="_blank">W3schools</a></li> </ul>
+      </article>
+   
     </section>
 </div>
           </div>
