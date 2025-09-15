@@ -114,7 +114,6 @@
 
       /* The dots/bullets/indicators */
       .dot {
-        cursor: pointer;
         height: 15px;
         width: 15px;
         margin: 0 2px;
@@ -237,8 +236,8 @@ function maytricks() { if (document.getElementById) {
   table=document.createElement("table");
   table.cellSpacing=0;
   ts=table.style;
-  ts.marginLeft="auto";
-  ts.marginRight="auto";
+  ts.marginLeft="10px";
+  ts.marginRight="10px";
   ts.width=columns*(font+1)+"px";
   ts.border="none";
   tbody=document.createElement("tbody");
@@ -424,7 +423,7 @@ function showSlides(n) {
                 <!-- Full-width images with number and caption text -->
                 <div class="mySlides fade">
                   <div class="numbertext">1 / 3</div>
-                  <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview"></iframe>
+                  <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:100%"></iframe>
                   <div class="text">Personal Website</div>
                 </div>
 
@@ -435,7 +434,7 @@ function showSlides(n) {
 
                 <div class="mySlides fade">
                   <div class="numbertext">3 / 3</div>
-                  <div id="matrix2">Under Development</div>
+                  <div id="matrix">Under Development</div>
                 </div>
 
                 <!-- Next and previous buttons -->
