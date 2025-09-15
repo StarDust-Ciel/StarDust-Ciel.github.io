@@ -1,123 +1,143 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MyPortal</title>
     <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/computer_explorer_2k-2.png">
     <link rel="stylesheet" href="https://unpkg.com/7.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyPortal</title>
+
     <style>
+      /* background + custom cursor */
       body {
         background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
         margin: 0;
         padding: 0;
-
-        /* Centering with flexbox */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       }
 
-      body, a, li, ul, img {
+      /* ensure cursor stays custom on interactive elements */
+      body, a, button, li, ul, img {
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
       }
 
-      /* Menu bar */
+      /* top menubar (stays at top) */
       ul[role="menubar"] {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 6px;
         list-style: none;
-        padding: 0;
-        margin: 10px auto;
+        padding: 10px 12px 6px;
+        margin: 0;
         justify-content: center;
-        width: 100%;
+        background: transparent;
       }
-
-      ul[role="menubar"] li {
-        display: inline-block;
-      }
-
+      ul[role="menubar"] li { display: inline-block; }
       ul[role="menubar"] a {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
-        padding: 4px 10px;
+        gap: 6px;
+        padding: 4px 8px;
         text-decoration: none;
         color: black;
         border-radius: 2px;
       }
+      ul[role="menubar"] a:hover { text-decoration: none; color: black; }
+      ul[role="menubar"] img { vertical-align: middle; }
 
-      ul[role="menubar"] a:hover {
-        color: black;
-      }
-
-      ul[role="menubar"] img {
-        vertical-align: middle;
-      }
-
-      .window {
-        max-width: 600px;
+      /* ===== KEY FIX: wrapper that centers the window under the menubar ===== */
+      .window-wrapper {
         width: 100%;
+        display: flex;
+        justify-content: center;    /* horizontally center the .window */
+        padding: 12px 16px 32px;    /* space below menubar and around on small screens */
+        box-sizing: border-box;
       }
+
+      /* limit window width so it doesn't stick to sides */
+      .window {
+        max-width: 760px;           /* change this if you want wider/narrower */
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      /* small responsive tweak so window has inner breathing room on tiny screens */
+      @media (max-width: 520px) {
+        .window-wrapper { padding-left: 8px; padding-right: 8px; }
+      }
+
+      /* keep tabs layout tidy inside the window (small overrides only) */
+      .tabs > menu[role="tablist"] {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0 0 8px 0;
+        padding: 0;
+        list-style: none;
+        justify-content: flex-start;
+      }
+      .tabs > article[role="tabpanel"] { margin: 0; padding-top: 6px; }
+
+      /* keep list items' text and link on the same line when possible */
+      .tabs [role="tabpanel"] ul { list-style: none; padding: 0; margin: 0; }
+      .tabs [role="tabpanel"] li { display: inline-flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+      .tabs [role="tabpanel"] a { text-decoration: none; color: inherit; }
     </style>
   </head>
+
   <body>
-    <!-- Menu bar -->
+    <!-- Menu bar (top) -->
     <ul role="menubar">
-      <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
-      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Projects</a></li>
-      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
-      <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
-      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
+      <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16" alt="">Home</a></li>
+      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16" alt="">Projects</a></li>
+      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16" alt="">Resources</a></li>
+      <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16" alt="">Links</a></li>
+      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16" alt="">Online Courses</a></li>
     </ul>
 
-    <!-- Window -->
-    <div class="window glass active">
-      <div class="title-bar"><span class="title">Middle</span></div>
-      <div class="window-body has-space">
-        <section class="tabs">
-          <menu role="tablist" aria-label="Tabs Template">
-            <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
-            <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
-            <button role="tab" aria-controls="tab-C" aria-selected="false">Tutorials&Codes</button>
-          </menu>
+    <!-- window-wrapper centers the window horizontally under the menubar -->
+    <div class="window-wrapper">
+      <div class="window glass active" role="main" aria-label="Main window">
+        <div class="title-bar"><span class="title">Middle</span></div>
 
-          <article role="tabpanel" id="tab-A">
-            <ul>
-              <li>The CSS framework used in this website: 
-                <a href="https://khang-nd.github.io/7.css" target="_blank">7.css Framework</a></li>
-              <li>Windows icons: 
-                <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a></li>
-              <li>Inspiration & resources: 
-                <a href="https://caitsith.neocities.org/myhomepage" target="_blank">caitsith.neocities.org</a></li>
-            </ul>
-          </article>
+        <div class="window-body has-space">
+          <!-- Tabs area -->
+          <section class="tabs">
+            <menu role="tablist" aria-label="Tabs Template">
+              <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
+              <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
+              <button role="tab" aria-controls="tab-C" aria-selected="false">Tutorials&amp;Codes</button>
+            </menu>
 
-          <article role="tabpanel" id="tab-B" hidden>
-            <ul>
-              <li>Energy Center research: 
-                <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li>
-              <li>Qatar Renewable Energy Strategy: 
-                <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li>
-            </ul>
-          </article>
+            <article role="tabpanel" id="tab-A">
+              <ul>
+                <li> The CSS framework used in this website: <a href="https://khang-nd.github.io/7.css" target="_blank" rel="noopener">7.css Framework</a></li>
+                <li> The Windows icons used: <a href="https://win98icons.alexmeub.com/" target="_blank" rel="noopener">Windows 98 Icon Viewer</a></li>
+                <li> Inspiration & resources: <a href="https://caitsith.neocities.org/myhomepage" target="_blank" rel="noopener">caitsith.neocities.org</a></li>
+              </ul>
+            </article>
 
-          <article role="tabpanel" id="tab-C" hidden>
-            <ul>
-              <li>Animations & effects: 
-                <a href="https://prismic.io/guides/css-animations" target="_blank">CSS Animation Collection</a></li>
-              <li>Tutorials: 
-                <a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
-            </ul>
-          </article>
-        </section>
+            <article role="tabpanel" id="tab-B" hidden>
+              <ul>
+                <li>The Energy Center research: <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank" rel="noopener">Energy Center</a></li>
+                <li>Qatar's Renewable Energy Strategy: <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank" rel="noopener">Kahramaa Renewable Energy</a></li>
+              </ul>
+            </article>
+
+            <article role="tabpanel" id="tab-C" hidden>
+              <ul>
+                <li>Animations & effects: <a href="https://prismic.io/guides/css-animations" target="_blank" rel="noopener">CSS Animation Collection</a></li>
+                <li>Tutorials: <a href="https://www.w3schools.com/" target="_blank" rel="noopener">W3Schools</a></li>
+              </ul>
+            </article>
+          </section>
+        </div>
       </div>
     </div>
 
     <script>
+      // simple tab behaviour (unchanged)
       const tabs = document.querySelectorAll('[role="tab"]');
       const tabPanels = document.querySelectorAll('[role="tabpanel"]');
 
@@ -128,7 +148,7 @@
 
           tab.setAttribute("aria-selected", "true");
           const target = document.getElementById(tab.getAttribute("aria-controls"));
-          target.hidden = false;
+          if (target) target.hidden = false;
         });
       });
     </script>
