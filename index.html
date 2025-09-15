@@ -194,7 +194,176 @@
           max-width: 100%;
         }
       }
+
+  
     </style>
+
+    <script type="text/javascript">
+// <![CDATA[
+var height=15; // number of rows - must be an odd number
+var speed=100; // lower is faster
+var reveal=33; // between 0 and 100
+               // the higher, the faster the word is 'decoded'
+var repeat=20; // if '0' the script does not repeat
+               // if set to a number this is the number of seconds until the script repeats
+var font=13;   // size of font to use
+var alink="http://www.mf2fm.com/rv"; // place to link to
+                                      // set to alink="" if not needed
+/***************************\
+* The Matrix JavaScripted.. *
+*(c)2003-14 mf2fm web-design*
+*  http://www.mf2fm.com/rv  *
+* DON'T EDIT BELOW THIS BOX *
+\***************************/
+var weird, table, columns, ma_txt;
+reveal/=100;
+var m_coch=new Array();
+var m_copo=new Array();
+var m_fast=new Array();
+var m_comp=0;
+
+if (typeof('addRVLoadEvent')!='function') function addRVLoadEvent(funky) {
+  var oldonload=window.onload;
+  if (typeof(oldonload)!='function') window.onload=funky;
+  else window.onload=function() {
+    if (oldonload) oldonload();
+    funky();
+  }
+}
+
+addRVLoadEvent(maytricks);
+
+function maytricks() { if (document.getElementById) {
+  var matrix, tbody, tr, td, ts;
+  if (height/2==Math.floor(height/2)) alert("height must be an odd number!");
+  matrix=document.getElementById("matrix");
+  ma_txt=matrix.firstChild.nodeValue;
+  ma_txt=" "+ma_txt+" ";
+  columns=ma_txt.length;
+  while (matrix.childNodes.length) matrix.removeChild(matrix.childNodes[0]);
+  for (td=33; td<126; td++) weird+=String.fromCharCode(td);
+  for (td=161; td<255; td++) weird+=String.fromCharCode(td);
+  table=document.createElement("table");
+  table.cellSpacing=0;
+  ts=table.style;
+  ts.marginLeft="auto";
+  ts.marginRight="auto";
+  ts.width=columns*(font+1)+"px";
+  ts.border="none";
+  tbody=document.createElement("tbody");
+  for (x=0; x<height; x++) {
+    tr=document.createElement("tr");
+    for (y=0; y<columns; y++) {
+      td=document.createElement("td");
+	  ts=td.style;
+	  ts.width=(font+1)+"px";
+	  ts.height="auto";
+	  ts.font=font+"pt monospace";
+	  ts.textAlign="center";
+	  ts.padding="0px";
+	  ts.backgroundColor="#000000";
+	  ts.color="#000000";
+	  ts.border="none";
+      td.appendChild(document.createTextNode(String.fromCharCode(160)));
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody);
+  matrix.appendChild(table);
+  reset();
+}}
+
+function reset() {
+  var i, j;
+  m_comp=0;
+  for (i=0; i<columns; i++) {
+    m_fast[i]=speed*(0.5+Math.random());
+    m_copo[i]=0;
+	for (j=0; j<height; j++) {
+	  table.rows[j].cells[i].style.color="#000000";
+	  table.rows[j].cells[i].style.textShadow="none";
+	}
+    newtricks(i);
+  }
+}
+
+function newtricks(c) {
+  var i;
+  if (m_copo[c]==Math.floor(height/2)+1 && m_coch[c]==ma_txt.charAt(c)) {
+    setTimeout("zoomer("+c+")", m_fast[c]);
+    if (++m_comp==columns && repeat) setTimeout("reset()", repeat*1000);
+  }
+  else if (m_copo[c]) {
+	if (m_copo[c]<=height) {
+	  table.rows[m_copo[c]-1].cells[c].style.color="#ccffcc";
+	  table.rows[m_copo[c]-1].cells[c].style.fontWeight="bold";
+	}
+	if (m_copo[c]>1 && m_copo[c]<height+2) {
+	  table.rows[m_copo[c]-2].cells[c].style.fontWeight="normal";
+	  table.rows[m_copo[c]-2].cells[c].style.color="#33ff33";
+	}
+    if (m_copo[c]>2 && m_copo[c]<height+3) table.rows[m_copo[c]-3].cells[c].style.color="#00cc00";
+	if (m_copo[c]>=height && m_copo[c]<2*height) table.rows[m_copo[c]-height].cells[c].style.color="#006600";
+	if (m_copo[c]>height && m_copo[c]<=2*height) table.rows[m_copo[c]-height-1].cells[c].style.color="#000000";
+	if (m_copo[c]++>=2*height) m_copo[c]=0;
+    setTimeout("newtricks("+c+")", m_fast[c]);
+  }
+  else {
+	if (Math.random()>0.9) {
+      if (reveal>Math.random() && (m_comp+1)/columns>Math.random()) m_coch[c]=ma_txt.charAt(c);
+      else m_coch[c]=weird.charAt(Math.floor(Math.random()*weird.length));
+      for (i=0; i<height; i++) table.rows[i].cells[c].firstChild.nodeValue=m_coch[c];
+      m_copo[c]++;
+      m_fast[c]=speed*(0.5+Math.random());
+	}
+    setTimeout("newtricks("+c+")", m_fast[c]);
+  }
+}
+
+function zoomer(c) {
+  var mtmp, mtem, ytmp;
+  if (m_copo[c]==Math.floor(height/2)+1) {
+    for (ytmp=0; ytmp<height; ytmp++) {
+	  mtmp=table.rows[ytmp].cells[c];
+      mtmp.firstChild.nodeValue=m_coch[c];
+      mtmp.style.color="#ccffcc";
+      mtmp.style.fontWeight="bold";
+	  mtmp.style.textShadow="#33ff33 0px 0px 2px";
+      if (alink) {
+        mtmp.style.cursor="pointer";
+        mtmp.onclick=function() { window.location.href=alink };
+      }
+    }
+    mtmp=ma_txt.indexOf(ma_txt.charAt(c));
+    m_copo[c]+=199;
+    setTimeout("zoomer("+c+")", speed);
+  }
+  else if (m_copo[c]>200) {
+	mtmp=table.rows[m_copo[c]-201].cells[c];
+	mtem=table.rows[200+height-m_copo[c]].cells[c];
+    m_copo[c]-=1;
+    mtmp.style.fontWeight="normal";
+	mtmp.style.color="#33ff33";
+	mtmp.style.textShadow="none";
+    mtem.style.fontWeight="normal";
+	mtem.style.color="#33ff33";
+	mtem.style.textShadow="none";
+    setTimeout("zoomer("+c+")", speed);
+  }
+  else if (m_copo[c]==200) m_copo[c]=100+Math.floor(height/2);
+  if (m_copo[c]>100 && m_copo[c]<200) {
+	mtmp=table.rows[m_copo[c]-101].cells[c];
+    mtmp.firstChild.nodeValue=String.fromCharCode(160);
+	mtem=table.rows[100+height-m_copo[c]].cells[c];
+    mtem.firstChild.nodeValue=String.fromCharCode(160);
+    m_copo[c]-=1;
+    setTimeout("zoomer("+c+")", speed);
+  }
+}
+// ]]>
+</script>
+    
   </head>
 
   <body>
@@ -240,20 +409,18 @@
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="img1.jpg" style="width:100%">
-    <div class="text">Caption Text</div>
+   <iframe src="https://philirious.neocities.org/home" allow="autoplay"></iframe>
+    <div class="text">Personal Website</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="img2.jpg" style="width:100%">
-    <div class="text">Caption Two</div>
+    <div id="matrix">Unde Devlopment</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="img3.jpg" style="width:100%">
-    <div class="text">Caption Three</div>
+    <div id="matrix">Unde Devlopment</div>
   </div>
 
   <!-- Next and previous buttons -->
