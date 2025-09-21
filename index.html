@@ -60,12 +60,8 @@
         margin: auto;
       }
 
-      /* Hide the images by default */
-      .mySlides {
-        display: none;
-      }
+      .mySlides {display: none;}
 
-      /* Next & previous buttons */
       .prev, .next {
         cursor: pointer;
         position: absolute;
@@ -81,18 +77,9 @@
         user-select: none;
       }
 
-      /* Position the "next button" to the right */
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
+      .next {right: 0; border-radius: 3px 0 0 3px;}
+      .prev:hover, .next:hover {background-color: rgba(0,0,0,0.8);}
 
-      /* On hover, add a black background color with a little bit see-through */
-      .prev:hover, .next:hover {
-        background-color: rgba(0,0,0,0.8);
-      }
-
-      /* Caption text */
       .text {
         color: black;
         font-size: 15px;
@@ -103,8 +90,6 @@
         text-align: center;
       }
 
-      
-      /* The dots/bullets/indicators */
       .dot {
         height: 15px;
         width: 15px;
@@ -115,20 +100,10 @@
         transition: background-color 0.6s ease;
       }
 
-      .active, .dot:hover {
-        background-color: #717171;
-      }
+      .active, .dot:hover {background-color: #717171;}
 
-      /* Fading animation */
-      .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-      }
-
-      @keyframes fade {
-        from {opacity: .4}
-        to {opacity: 1}
-      }
+      .fade {animation-name: fade; animation-duration: 1.5s;}
+      @keyframes fade {from {opacity: .4} to {opacity: 1}}
 
       /* Banner */
       .banner {
@@ -160,32 +135,56 @@
         max-width: 1200px;
       }
 
-      .column.side {
-        flex: 1;
-        max-width: 25%;
-      }
+      .column.side {flex: 1; max-width: 25%;}
+      .column.middle {flex: 2; max-width: 50%;}
+      .window {height: 100%;}
 
-      .column.middle {
-        flex: 2;
-        max-width: 50%;
-      }
-
-      .window {
-        height: 100%;
-      }
-
-      /* Responsive */
       @media (max-width: 900px) {
-        .row {
-          flex-direction: column;
-          align-items: center;
-        }
-        .column.side,
-        .column.middle {
-          max-width: 100%;
-        }
+        .row {flex-direction: column; align-items: center;}
+        .column.side, .column.middle {max-width: 100%;}
       }
     </style>
+
+    <!-- Email validation + hover scripts -->
+    <script type="text/javascript">
+      function validateEmail() {
+        var re=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,7})+$/;
+        if (!re.test(document.forms['eform'].from.value)) {
+          alert('Please enter a valid e-mail address');
+          document.eform.from.focus();
+          return false;
+        }
+        else return true;
+      }
+
+      function over(el) {
+        el.style.borderColor="#fff";
+        el.style.borderRightColor="#666";
+        el.style.borderBottomColor="#666";
+      }
+
+      function out(el) {
+        el.style.borderColor="#ccc";
+      }
+    </script>
+
+    <!-- Slideshow script -->
+    <script>
+      let slideIndex = 1;
+      function plusSlides(n) {showSlides(slideIndex += n);}
+      function currentSlide(n) {showSlides(slideIndex = n);}
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {slides[i].style.display = "none";}
+        for (i = 0; i < dots.length; i++) {dots[i].className = dots[i].className.replace(" active", "");}
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+      }
+    </script>
 
       <script type="text/javascript">
 // <![CDATA[
@@ -350,34 +349,10 @@ function zoomer(c) {
     setTimeout("zoomer("+c+")", speed);
   }
 }
-// ]]> 
-        
-<script>
-// Slideshow script
-let slideIndex = 1;
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
 // ]]>
 </script>
+
+	  
   </head>
 
   <body>
@@ -391,9 +366,7 @@ function showSlides(n) {
     </ul>
 
     <!-- Banner -->
-    <div class="banner">
-      <h1>My Portal</h1>
-    </div>
+    <div class="banner"><h1>My Portal</h1></div>
 
     <!-- Three Columns -->
     <div class="row">
@@ -414,31 +387,19 @@ function showSlides(n) {
       <!-- Middle Column -->
       <div class="column middle">
         <div class="background">
-          <div class="window glass active" style="max-width: 100%;">
+          <div class="window glass active" style="max-width: 100%">
             <div class="title-bar"><span class="title">Middle</span></div>
             <div class="window-body has-space">
-              <!-- Slideshow container -->
               <div class="slideshow-container">
-
-                <!-- Full-width images with number and caption text -->
                 <div class="mySlides fade">
-                  <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:120%; height:100%;"></iframe>
+                  <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:120%; height:100%"></iframe>
                   <div class="text">Personal Website</div>
                 </div>
-
-                <div class="mySlides fade">
-                  <div id="matrix" style="width:150% height=100%;" >Under Development</div>
-                </div>
-
-                
-
-                <!-- Next and previous buttons -->
+                <div class="mySlides fade"><div id="matrix">Under Development</div></div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
               </div>
               <br>
-
-              <!-- The dots/circles -->
               <div style="text-align:center">
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
@@ -452,9 +413,32 @@ function showSlides(n) {
       <div class="column side">
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
-            <div class="title-bar"><span class="title">Right</span></div>
+            <div class="title-bar"><span class="title">Contact Me</span></div>
             <div class="window-body has-space">
-              Right column content
+              <!-- Email Form -->
+              <form name="eform" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" onsubmit="return validateEmail();">
+                <table style="width:100%; background-color:#ccc">
+                  <tr>
+                    <td class="d">Name:</td>
+                    <td class="d"><input type="text" class="inp" name="name" placeholder="Enter your name" required></td>
+                  </tr>
+                  <tr>
+                    <td class="d">E-mail:</td>
+                    <td class="d"><input type="email" class="inp" name="from" placeholder="Enter your e-mail address" required></td>
+                  </tr>
+                  <tr>
+                    <td class="d" valign="top">Message:</td>
+                    <td class="d"><textarea class="inp" name="message" cols="30" rows="6" style="height:120px" required></textarea></td>
+                  </tr>
+                  <tr>
+                    <td class="d" colspan="2" style="text-align:center;">
+                      <div onmouseover="over(this)" onmouseout="out(this)" class="mushroom" style="display:inline-block; cursor:pointer;">
+                        <input type="submit" value="Send">
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
             </div>
           </div>
         </div>
