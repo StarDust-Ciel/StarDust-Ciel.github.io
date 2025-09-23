@@ -192,7 +192,7 @@ var height=15; // number of rows - must be an odd number
 var speed=100; // lower is faster
 var reveal=33; // between 0 and 100
                // the higher, the faster the word is 'decoded'
-var repeat=20; // if '0' the script does not repeat
+var repeat=10; // if '0' the script does not repeat
                // if set to a number this is the number of seconds until the script repeats
 var font=13;   // size of font to use
 var alink="http://www.mf2fm.com/rv"; // place to link to
@@ -374,7 +374,7 @@ function zoomer(c) {
       <div class="column side">
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
-            <div class="title-bar"><span class="title">Left</span></div>
+            <div class="title-bar"><span class="title">About</span></div>
             <div class="window-body has-space">
               <div role="tooltip">
                 This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and will never get past editing this website.
@@ -388,14 +388,14 @@ function zoomer(c) {
       <div class="column middle">
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
-            <div class="title-bar"><span class="title">Middle</span></div>
+            <div class="title-bar"><span class="title">Projects</span></div>
             <div class="window-body has-space">
               <div class="slideshow-container">
                 <div class="mySlides fade">
                   <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:120%; height:100%"></iframe>
                   <div class="text">Personal Website</div>
                 </div>
-                <div class="mySlides fade"><div id="matrix">Under Development</div></div>
+                <div class="mySlides fade"><div id="matrix" style="width:200%; >Under Development</div></div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
               </div>
@@ -416,7 +416,7 @@ function zoomer(c) {
             <div class="title-bar"><span class="title">Contact Me</span></div>
             <div class="window-body has-space">
               <!-- Email Form -->
-              <form name="eform" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" onsubmit="return validateEmail();">
+              <form name="eform" method="POST" action="https://formspree.io/f/xnngqdjg" onsubmit="return validateEmail();">
                 <table style="width:100%; background-color:#ccc">
                   <tr>
                     <td class="d">Name:</td>
