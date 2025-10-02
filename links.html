@@ -124,6 +124,23 @@
         text-align: center;
       }
 
+      .column.middle {
+      display: flex;
+      justify-content: center;
+      margin: 1rem auto;
+      max-width: 50%;
+    }
+
+    .window {
+      width: 100%;
+    }
+
+    @media (max-width: 900px) {
+      .column.middle {
+        max-width: 95%;
+      }
+    }
+
       
       
     </style>
@@ -140,11 +157,11 @@
       <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
     </ul>
 
-    
+    <div class="column middle">
       <div class="background"> 
-        <div class="window glass active" style="max-width: 100% position: absolute; top:  50%;left: 50%; transform: translate(-50%,-50%); "> 
+        <div class="window glass active"> 
           <div class="title-bar" style="background-attachment: local;"> 
-            <div class="title-bar-text"></div> </div>
+            <div class="title-bar-text">Window</div> </div>
   <div class="window-body has-space">
     <div class="button-container">
       <button class="big-button" onclick="window.location.href='https://www.linkedin.com/in/marwa-benasla-50ab94380/'">Linkedin</button>
@@ -153,6 +170,7 @@
   </div>
 </div>
       </div>
+    </div>
 
     
 
