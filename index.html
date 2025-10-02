@@ -378,7 +378,7 @@ function zoomer(c) {
       <!-- Middle Column -->
       <div class="column middle">
         <div class="background">
-          <div class="window glass active" style="max-width: 100%">
+          <div class="window glass active" style="max-width: 100% height:100%">
 			  <div class="title-bar" style="background-attachment: local;"> 
             <div class="title-bar-text">Projects</div> </div>
             <div class="window-body has-space">
@@ -387,7 +387,7 @@ function zoomer(c) {
                   <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:100%; height:100%"></iframe>
                   <div class="text">Personal Website</div>
                 </div>
-                <div class="mySlides fade"><div id="matrix" style="width:150%"; >Under Development</div></div>
+                <div class="mySlides fade"><div id="matrix" style="position: absolute; width:200%"; >Under Development</div></div>
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next" onclick="plusSlides(1)">&#10095;</a>
               </div>
@@ -420,13 +420,16 @@ function zoomer(c) {
                     <td class="d"><input type="email" class="inp" name="from" placeholder="Enter your e-mail address" required></td>
                   </tr>
                   <tr>
+					  
                     <td class="d" valign="top">Message:</td>
-                    <td class="d"><textarea class="inp" name="message" cols="30" rows="6" style="height:120px" required></textarea></td>
-                  </tr>
+					  <div class="group" style="width: 200px">
+                    <td class="d"><textarea class="inp" name="message" cols="30" rows="6" style="height:120px" required></textarea></td> </div>
+                  </tr> 
                   <tr>
                     <td class="d" colspan="2" style="text-align:center;">
-                      <div onmouseover="over(this)" onmouseout="out(this)" class="mushroom" style="display:inline-block; cursor:pointer;">
-                        <input type="submit" value="Send">
+                      <div onmouseover="over(this)" onmouseout="out(this)" class="mushroom" style="display:inline-block; ">
+                       <button> <input type="submit" value="Send"> </button>
+ 
                       </div>
                     </td>
                   </tr>
