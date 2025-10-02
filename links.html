@@ -12,7 +12,19 @@
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
         margin: 0;
         padding: 0;
-      }
+      
+
+  display: flex;               
+  justify-content: center;      
+  align-items: center;          
+  height: 100vh;                
+}
+
+.window {
+  max-width: 400px;             
+  width: 100%;
+}
+
 
       body, a, li, ul, img, button {
         cursor: url("https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png"), auto !important;
@@ -123,8 +135,7 @@
         text-align: center;
       }
 
-      .column.middle {flex: 2; max-width: 50%;}
-      .window {height: 100%;}
+      
       
     </style>
   </head>
@@ -141,20 +152,19 @@
     </ul>
 
     
-      <div class="column middle">
-    <div class="background">
-  <div class="window glass active" style="max-width: 100%">
-    <div class="title-bar" style="background-attachment: local;">
-      <div class="title-bar-text"></div>
-    </div>
-    <div class="window-body has-space"><div class="button-container">
+      <div class="background"> 
+        <div class="window glass active" style="max-width: 100%"> 
+          <div class="title-bar" style="background-attachment: local;"> 
+            <div class="title-bar-text"></div> </div>
+  <div class="window-body has-space">
+    <div class="button-container">
       <button class="big-button" onclick="window.location.href='https://www.linkedin.com/in/marwa-benasla-50ab94380/'">Linkedin</button>
       <button class="big-button" onclick="window.location.href='https://github.com/StarDust-Ciel/'">GitHub</button>
-    </div>
     </div>
   </div>
 </div>
       </div>
+
     
 
   </body>
