@@ -88,7 +88,7 @@ p {
 	height: 65vmin;
 	margin: 2rem auto;
 	border: 8px solid;
-	border-image: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+	border-image: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%) 1;
 	transition: 0.3s ease-in-out;
 	position: relative;
 	overflow: hidden;
@@ -285,6 +285,18 @@ p {
 .delay-8 {
 	animation-delay: 2.4s;
 }
+.cards-container {
+  display: flex;           /* horizontal layout */
+  flex-wrap: wrap;         /* allow wrapping to next line */
+  justify-content: center; /* center all cards */
+  gap: 2rem;               /* space between cards */
+  padding: 2rem;
+}
+
+.wrap {
+  width: 85vmin;
+  height: 65vmin;
+}
 
     </style>
   </head>
@@ -301,26 +313,47 @@ p {
     </ul>
 
 
-    <div class="wrap animate pop">
-	<div class="overlay">
-		<div class="overlay-content animate slide-left delay-2">
-			<h1 class="animate slide-left pop delay-4">Trees</h1>
-			<p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
-		</div>
-		<div class="image-content animate slide delay-5"></div>
-		<div class="dots animate">
-			<div class="dot animate slide-up delay-6"></div>
-			<div class="dot animate slide-up delay-7"></div>
-			<div class="dot animate slide-up delay-8"></div>
-		</div>
-	</div>
-	<div class="text">
-		<p><img class="inset" src="https://assets.codepen.io/4787486/oak_1.jpg" alt="" />Trees are woody perennial plants that are a member of the kingdom <em>Plantae</em>. All species of trees are grouped by their genus, family, and order. This helps make identifying and studying trees easier.</p>
-		<p>Apart from providing oxygen for the planet and beauty when they bloom or turn color, trees are very useful. Certain species of hardwood and softwood trees are excellent for timber, making furniture, and paper.</p>
-		<p>When managed properly, trees are a good source of renewable energy and construction material.</p>
-		<img class="tree" src="https://assets.codepen.io/4787486/tree+clipart.jpeg" alt="" />
-	</div>
+   <div class="cards-container">
+  <!-- first card -->
+  <div class="wrap animate pop">
+    <div class="overlay">
+      <div class="overlay-content animate slide-left delay-2">
+        <h1 class="animate slide-left pop delay-4">Trees</h1>
+        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
+      </div>
+      <div class="image-content animate slide delay-5"></div>
+      <div class="dots animate">
+        <div class="dot animate slide-up delay-6"></div>
+        <div class="dot animate slide-up delay-7"></div>
+        <div class="dot animate slide-up delay-8"></div>
+      </div>
+    </div>
+    <div class="text">
+      <p><img class="inset" src="https://assets.codepen.io/4787486/oak_1.jpg" alt="" />Trees are woody perennial plants...</p>
+      <img class="tree" src="https://assets.codepen.io/4787486/tree+clipart.jpeg" alt="" />
+    </div>
+  </div>
+
+  <!-- second card -->
+  <div class="wrap animate pop">
+    <div class="overlay">
+      <div class="overlay-content animate slide-left delay-2">
+        <h1 class="animate slide-left pop delay-4">Flowers</h1>
+        <p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
+      </div>
+      <div class="image-content animate slide delay-5" style="background-image:url('https://assets.codepen.io/4787486/flowers.png');"></div>
+      <div class="dots animate">
+        <div class="dot animate slide-up delay-6"></div>
+        <div class="dot animate slide-up delay-7"></div>
+        <div class="dot animate slide-up delay-8"></div>
+      </div>
+    </div>
+    <div class="text">
+      <p><img class="inset" src="https://assets.codepen.io/4787486/oak_1.jpg" alt="" />Flowers are reproductive structures...</p>
+    </div>
+  </div>
 </div>
+
    
 
   </body>
