@@ -88,7 +88,6 @@
       .next { right: 10px; }
 
       .prev:hover, .next:hover {
-        background: rgba(255,255,255,1);
         transform: translateY(-50%) scale(1.06);
       }
 
@@ -153,7 +152,7 @@
       }
 
       .pop {
-        animation: popIn 450ms cubic-bezier(.2,.9,.3,1) both;
+        animation: popIn 550ms cubic-bezier(.2,.9,.3,1) both;
       }
 
       /* Slight stagger helper: will be toggled in JS by adding inline style --delay */
@@ -191,17 +190,14 @@
       }
     </script>
 
-    <!-- Slideshow script (auto-advance + pause-on-hover + manual reset) -->
-    <script>
+    <!-- Slideshow script  -->
+   <script>
       let slideIndex = 1;
-      const AUTO_INTERVAL = 5000; // milliseconds between auto-advances
-      let autoTimer = null;
 
       function plusSlides(n) {
         showSlides(slideIndex += n);
-        restartAuto(); // reset the auto timer when user manually navigates
       }
-      function currentSlide(n) { showSlides(slideIndex = n); restartAuto(); }
+      function currentSlide(n) { showSlides(slideIndex = n); }
 
       function showSlides(n) {
         const slides = document.getElementsByClassName("mySlides");
@@ -214,42 +210,10 @@
         slides[slideIndex - 1].style.display = "block";
       }
 
-      function startAuto() {
-        stopAuto(); // ensure not duplicating timers
-        autoTimer = setInterval(() => {
-          showSlides(++slideIndex);
-        }, AUTO_INTERVAL);
-      }
-
-      function stopAuto() {
-        if (autoTimer !== null) {
-          clearInterval(autoTimer);
-          autoTimer = null;
-        }
-      }
-
-      function restartAuto() {
-        stopAuto();
-        startAuto();
-      }
-
-      // Hook up pause-on-hover and initialize slideshow
+      // initialize after DOM is ready
       document.addEventListener("DOMContentLoaded", function() {
         // show first slide
         showSlides(slideIndex);
-
-        // start auto-advance
-        startAuto();
-
-        // pause on hover for each slideshow container
-        const containers = document.getElementsByClassName("slideshow-container");
-        Array.prototype.forEach.call(containers, (container) => {
-          container.addEventListener("mouseenter", stopAuto);
-          container.addEventListener("mouseleave", startAuto);
-          // also add touchstart to pause on touch devices while interacting
-          container.addEventListener("touchstart", stopAuto, {passive: true});
-          container.addEventListener("touchend", startAuto, {passive: true});
-        });
 
         // keyboard navigation (optional): left/right arrows
         document.addEventListener("keydown", (ev) => {
@@ -257,11 +221,18 @@
           if (ev.key === "ArrowRight") { plusSlides(1); }
         });
 
-        // Pop-in animation for windows with a slight stagger
+        // Pop-in animation for banner + windows with a slight stagger
+        const banner = document.querySelector('.banner');
+        if (banner) {
+          // small delay for banner to pop first
+          banner.classList.add('pop', 'stagger');
+          banner.style.setProperty('--delay', `80ms`);
+        }
+
         const windows = document.querySelectorAll('.window');
         windows.forEach((w, idx) => {
-          // add class after a tiny timeout to allow CSS transition and to stagger them
-          const delay = 100 * idx; // 80ms between each window for a cascading pop
+          // cascade windows after banner
+          const delay = 160 + 80 * idx; // banner (80ms), then windows start at 160ms onward
           w.classList.add('pop', 'stagger');
           w.style.setProperty('--delay', `${delay}ms`);
         });
