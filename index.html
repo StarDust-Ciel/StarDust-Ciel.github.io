@@ -58,11 +58,63 @@
         max-width: 1000px;
         position: relative;
         margin: auto;
+        overflow: visible;
       }
 
-      .mySlides {display: none;}
-      
+      .mySlides { display: none; }
 
+      /* Prev/Next buttons positioned at sides */
+      .prev, .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background: rgba(255,255,255,0.9);
+        border: 2px solid #000;
+        border-radius: 50%;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        transition: transform 0.12s ease, background 0.12s ease;
+      }
+
+      .prev img, .next img {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .prev { left: 10px; }
+      .next { right: 10px; }
+
+      .prev:hover, .next:hover {
+        background: rgba(255,255,255,1);
+        transform: translateY(-50%) scale(1.06);
+      }
+
+      .mySlides iframe, .mySlides img {
+        width: 100%;
+        height: 420px; /* set slide height */
+        display: block;
+        border: none;
+      }
+
+      .text {
+        text-align: center;
+        padding-top: 8px;
+      }
+
+      /* small screens */
+      @media (max-width: 900px) {
+        .mySlides iframe, .mySlides img { height: 260px; }
+        .prev, .next { width: 32px; height: 32px; }
+        .prev img, .next img { width: 14px; height: 14px; }
+      }
 
       /* Banner */
       .banner {
@@ -98,11 +150,26 @@
       .column.middle {flex: 2; max-width: 50%;}
       .window {height: 100%;}
 
+      /* Pop animation for windows on load */
+      @keyframes popIn {
+        0%   { transform: scale(0.85); opacity: 0; filter: blur(6px); }
+        60%  { transform: scale(1.03); opacity: 1; filter: blur(0); }
+        100% { transform: scale(1); opacity: 1; filter: none; }
+      }
+
+      .pop {
+        animation: popIn 360ms cubic-bezier(.2,.9,.3,1) both;
+      }
+
+      /* Slight stagger helper: will be toggled in JS by adding inline style --delay */
+      .pop.stagger {
+        animation-delay: var(--delay, 0ms);
+      }
+
       @media (max-width: 900px) {
         .row {flex-direction: column; align-items: center;}
         .column.side, .column.middle {max-width: 100%;}
       }
-		
 
     </style>
 
@@ -129,20 +196,81 @@
       }
     </script>
 
-    <!-- Slideshow script -->
+    <!-- Slideshow script (auto-advance + pause-on-hover + manual reset) -->
     <script>
       let slideIndex = 1;
-      function plusSlides(n) {showSlides(slideIndex += n);}
-      function currentSlide(n) {showSlides(slideIndex = n);}
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {slides[i].style.display = "none";}
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
+      const AUTO_INTERVAL = 5000; // milliseconds between auto-advances
+      let autoTimer = null;
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+        restartAuto(); // reset the auto timer when user manually navigates
       }
+      function currentSlide(n) { showSlides(slideIndex = n); restartAuto(); }
+
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("mySlides");
+        if (!slides.length) return;
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+      function startAuto() {
+        stopAuto(); // ensure not duplicating timers
+        autoTimer = setInterval(() => {
+          showSlides(++slideIndex);
+        }, AUTO_INTERVAL);
+      }
+
+      function stopAuto() {
+        if (autoTimer !== null) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      function restartAuto() {
+        stopAuto();
+        startAuto();
+      }
+
+      // Hook up pause-on-hover and initialize slideshow
+      document.addEventListener("DOMContentLoaded", function() {
+        // show first slide
+        showSlides(slideIndex);
+
+        // start auto-advance
+        startAuto();
+
+        // pause on hover for each slideshow container
+        const containers = document.getElementsByClassName("slideshow-container");
+        Array.prototype.forEach.call(containers, (container) => {
+          container.addEventListener("mouseenter", stopAuto);
+          container.addEventListener("mouseleave", startAuto);
+          // also add touchstart to pause on touch devices while interacting
+          container.addEventListener("touchstart", stopAuto, {passive: true});
+          container.addEventListener("touchend", startAuto, {passive: true});
+        });
+
+        // keyboard navigation (optional): left/right arrows
+        document.addEventListener("keydown", (ev) => {
+          if (ev.key === "ArrowLeft") { plusSlides(-1); }
+          if (ev.key === "ArrowRight") { plusSlides(1); }
+        });
+
+        // Pop-in animation for windows with a slight stagger
+        const windows = document.querySelectorAll('.window');
+        windows.forEach((w, idx) => {
+          // add class after a tiny timeout to allow CSS transition and to stagger them
+          const delay = 80 * idx; // 80ms between each window for a cascading pop
+          w.classList.add('pop', 'stagger');
+          w.style.setProperty('--delay', `${delay}ms`);
+        });
+      });
     </script>
 
       <script type="text/javascript">
@@ -351,23 +479,27 @@ function zoomer(c) {
 			  <div class="title-bar" style="background-attachment: local;"> 
             <div class="title-bar-text">Projects</div> </div>
             <div class="window-body has-space">
-              <div class="slideshow-container">
-  <div class="mySlides fade">
-	  <a class="prev" onclick="plusSlides(-1)">
-    <img src="button.png" style="width:30px; height:30px" alt="Previous">
-  </a>
-    <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview" style="width:100%; height:100%"></iframe>
-    <div class="text">Personal Website</div>
-  </div>
+              <div class="slideshow-container" aria-roledescription="carousel">
+                <!-- Prev button (left) -->
+                <a class="prev" href="javascript:void(0)" onclick="plusSlides(-1)" aria-label="Previous slide">
+                  <img src="button.png" alt="Prev">
+                </a>
 
-  <div class="mySlides fade">
-    <div id="matrix" style="margin: 0 auto; max-width:100%;">Under Development</div>
-  </div>
-				    <a class="next" onclick="plusSlides(1)">
-    <img src="button.png" style="width:30px; height:30px" alt="Next">
-  </a>
-</div>
+                <!-- Slides -->
+                <div class="mySlides fade">
+                  <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview"></iframe>
+                  <div class="text">Personal Website</div>
+                </div>
 
+                <div class="mySlides fade">
+                  <div id="matrix" style="margin: 0 auto; max-width:100%;">Under Development</div>
+                </div>
+
+                <!-- Next button (right) -->
+                <a class="next" href="javascript:void(0)" onclick="plusSlides(1)" aria-label="Next slide">
+                  <img src="button.png" alt="Next">
+                </a>
+              </div>
               
             </div>
           </div>
