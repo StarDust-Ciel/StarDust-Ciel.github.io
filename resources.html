@@ -69,7 +69,36 @@
         max-width: 95%;
       }
     }
+
+    /* Pop animation for windows on load (same as index.html) */
+    @keyframes popIn {
+      0%   { transform: scale(0.85); opacity: 0; filter: blur(6px); }
+      60%  { transform: scale(1.03); opacity: 1; filter: blur(0); }
+      100% { transform: scale(1); opacity: 1; filter: none; }
+    }
+
+    .pop {
+      animation: popIn 550ms cubic-bezier(.2,.9,.3,1) both;
+    }
+
+    /* Slight stagger helper: will be toggled in JS by adding inline style --delay */
+    .pop.stagger {
+      animation-delay: var(--delay, 0ms);
+    }
+
   </style>
+
+  <script>
+    // Add pop-in to .window elements on DOM ready
+    document.addEventListener("DOMContentLoaded", function() {
+      const windows = document.querySelectorAll('.window');
+      windows.forEach((w, idx) => {
+        const delay = 80 + 80 * idx;
+        w.classList.add('pop', 'stagger');
+        w.style.setProperty('--delay', `${delay}ms`);
+      });
+    });
+  </script>
 </head>
 <body>
 
@@ -141,4 +170,3 @@
   </script>
 </body>
 </html>
-
