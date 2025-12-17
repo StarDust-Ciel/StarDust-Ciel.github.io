@@ -70,7 +70,6 @@
       }
     }
 
-    /* Pop animation for windows on load (same as index.html) */
     @keyframes popIn {
       0%   { transform: scale(0.85); opacity: 0; filter: blur(6px); }
       60%  { transform: scale(1.03); opacity: 1; filter: blur(0); }
@@ -81,7 +80,6 @@
       animation: popIn 550ms cubic-bezier(.2,.9,.3,1) both;
     }
 
-    /* Slight stagger helper: will be toggled in JS by adding inline style --delay */
     .pop.stagger {
       animation-delay: var(--delay, 0ms);
     }
@@ -89,7 +87,6 @@
   </style>
 
   <script>
-    // Add pop-in to .window elements on DOM ready
     document.addEventListener("DOMContentLoaded", function() {
       const windows = document.querySelectorAll('.window');
       windows.forEach((w, idx) => {
@@ -105,7 +102,7 @@
   <!-- Menu bar -->
   <ul role="menubar">
     <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
-    <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Projects</a></li>
+    <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Research</a></li>
     <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
     <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
     <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
