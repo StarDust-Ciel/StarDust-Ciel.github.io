@@ -52,7 +52,7 @@
       vertical-align: middle;
     }
 
-    /* Middle column wrapper */
+    
     .column.middle {
       display: flex;
       justify-content: center;
@@ -100,15 +100,15 @@
 <body>
 
   <!-- Menu bar -->
-  <ul role="menubar">
-    <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
-    <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Research</a></li>
-    <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
-    <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
-    <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
-  </ul>
+   <ul role="menubar">
+      <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
+      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Writings</a></li>
+      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Certificates</a></li>
+      <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
+      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
+    </ul>
     
-  <!-- Middle content with tabs -->
+  
   <div class="column middle">
     <div class="window glass active">
       <div class="title-bar"><span class="title">Window</span></div>
@@ -116,7 +116,6 @@
         <section class="tabs">
           <menu role="tablist" aria-label="Tabs Template">
             <button role="tab" aria-controls="tab-A" aria-selected="true">CSS</button>
-            <button role="tab" aria-controls="tab-B" aria-selected="false">Renewable-Energy Resources</button>
             <button role="tab" aria-controls="tab-C" aria-selected="false">Tutorials & Codes</button>
           </menu>
 
@@ -126,13 +125,6 @@
               <li>Animations & effects: <a href="https://prismic.io/guides/css-animations" target="_blank">CSS Animation Collection</a></li> 
               <li>The Windows icons used: <a href="https://win98icons.alexmeub.com/" target="_blank">Windows 98 Icon Viewer</a></li> 
               <li>Website inspiration: <a href="https://caitsith.neocities.org/myhomepage" target="_blank">caitsith.neocities.org</a></li>
-            </ul>
-          </article>
-
-          <article role="tabpanel" id="tab-B" hidden>
-            <ul>
-              <li>Energy Center research in HBKU: <a href="https://www.hbku.edu.qa/en/qeeri/energy-center" target="_blank">Energy Center</a></li> 
-              <li>Qatar's Renewable Energy Strategy: <a href="https://www.km.qa/RenewableEnergy/Pages/BeSolar.aspx" target="_blank">Kahramaa Renewable Energy</a></li>
             </ul>
           </article>
 
@@ -150,7 +142,7 @@
     </div>
   </div>
 
-  <!-- Tabs JS -->
+ 
   <script>
     const tabs = document.querySelectorAll('[role="tab"]');
     const tabPanels = document.querySelectorAll('[role="tabpanel"]');
