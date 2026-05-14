@@ -53,7 +53,7 @@
 
       * {box-sizing:border-box}
 
-      /* Slideshow container */
+     
       .slideshow-container {
         max-width: 1000px;
         position: relative;
@@ -63,7 +63,6 @@
 
       .mySlides { display: none; }
 
-      /* Prev/Next buttons positioned at sides */
       .prev, .next {
         position: absolute;
         top: 50%;
@@ -110,7 +109,7 @@
         .prev img, .next img { width: 14px; height: 14px; }
       }
 
-      /* Banner */
+      
       .banner {
         border: 2px solid black;
         border-style: inset;
@@ -130,7 +129,7 @@
         margin: 0;
       }
 
-      /* Columns */
+      
       .row {
         display: flex;
         justify-content: center;
@@ -144,7 +143,7 @@
       .column.middle {flex: 2; max-width: 50%;}
       .window {height: 100%;}
 
-      /* Pop animation for windows on load */
+     
       @keyframes popIn {
         0%   { transform: scale(0.85); opacity: 0; filter: blur(6px); }
         60%  { transform: scale(1.03); opacity: 1; filter: blur(0); }
@@ -233,16 +232,13 @@
     </script>
 
       <script type="text/javascript">
-// <![CDATA[
-var height=15; // number of rows - must be an odd number
-var speed=100; // lower is faster
-var reveal=33; // between 0 and 100
-               // the higher, the faster the word is 'decoded'
-var repeat=10; // if '0' the script does not repeat
-               // if set to a number this is the number of seconds until the script repeats
-var font=13;   // size of font to use
-var alink="http://www.mf2fm.com/rv"; // place to link to
-                                      // set to alink="" if not needed
+
+var height=15; 
+var speed=100; 
+var reveal=33; 
+var repeat=10; 
+var font=13;   
+var alink=" "; 
 /***************************\
 * The Matrix JavaScripted.. *
 *(c)2003-14 mf2fm web-design*
@@ -395,7 +391,7 @@ function zoomer(c) {
     setTimeout("zoomer("+c+")", speed);
   }
 }
-// ]]>
+
 </script>
 
 	  
@@ -405,18 +401,16 @@ function zoomer(c) {
     <!-- Menu bar -->
     <ul role="menubar">
       <li role="menuitem"><a href="index.html"><img src="https://win98icons.alexmeub.com/icons/png/homepage_alt.png" width="16" height="16">Home</a></li>
-      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Research</a></li>
-      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
+      <li role="menuitem"><a href="projects.html"><img src="https://win98icons.alexmeub.com/icons/png/desktop_w95-0.png" width="16" height="16">Writings</a></li>
+      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Certificates</a></li>
       <li role="menuitem"><a href="links.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_user.png" width="16" height="16">Links</a></li>
-      <li role="menuitem"><a href="online.html"><img src="https://win98icons.alexmeub.com/icons/png/address_book_card.png" width="16" height="16">Online Courses</a></li>
+      <li role="menuitem"><a href="resources.html"><img src="https://win98icons.alexmeub.com/icons/png/help_book_big-1.png" width="16" height="16">Resources</a></li>
     </ul>
 
-    <!-- Banner -->
+   
     <div class="banner"><h1>My Portal</h1></div>
 
-    <!-- Three Columns -->
     <div class="row">
-      <!-- Left Column -->
       <div class="column side">
 		  <div class="background"> 
         <div class="window glass active" style="max-width: 100%" > 
@@ -424,14 +418,13 @@ function zoomer(c) {
             <div class="title-bar-text">About</div> </div>
              <div class="window-body has-space">
               <div role="tooltip">
-                This website is a portfolio (portal) of Marwa. I am a computer science student with immense interest in old tech and the 2000s old web aesthetic. I am still learning and this website will always be updated.
+                This website is a portfolio (portal) of Marwa Benasla. Computer Science undergraduate with hands-on experience in data cleaning, visualization, and hypothesis testing using Python and R. Skilled in Python, Java, PHP, and web development (HTML/CSS). Strong problem-solving and troubleshooting skills, highly organized, adaptable, and eager to apply both technical knowledge and teamwork abilities in junior data science/analytics roles and internship. I am still learning and this website will always be updated.
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Middle Column -->
       <div class="column middle">
         <div class="background">
           <div class="window glass active" style="max-width: 100% height:100%">
@@ -439,22 +432,23 @@ function zoomer(c) {
             <div class="title-bar-text">Projects</div> </div>
             <div class="window-body has-space">
               <div class="slideshow-container" aria-roledescription="carousel">
-                <!-- Prev button (left) -->
+               
                 <a class="prev" href="javascript:void(0)" onclick="plusSlides(-1)" aria-label="Previous slide">
                   <img src="button.png" alt="Prev">
                 </a>
 
-                <!-- Slides -->
+                <!--Projects-->
                 <div class="mySlides fade">
+                  <div id="matrix" style="margin: 0 auto; max-width:100%;">Under Development</div>
+					<div class="text">Intrusion Detection System</div>
+                </div>
+				  
+				  <div class="mySlides fade">
                   <iframe src="https://philirious.neocities.org/home" allow="autoplay" title="Personal Website Preview"></iframe>
                   <div class="text">Personal Website</div>
                 </div>
 
-                <div class="mySlides fade">
-                  <div id="matrix" style="margin: 0 auto; max-width:100%;">Under Development</div>
-                </div>
-
-                <!-- Next button (right) -->
+                
                 <a class="next" href="javascript:void(0)" onclick="plusSlides(1)" aria-label="Next slide">
                   <img src="button.png" alt="Next">
                 </a>
@@ -465,7 +459,7 @@ function zoomer(c) {
         </div>
       </div>
 
-      <!-- Right Column -->
+     
       <div class="column side">
         <div class="background">
           <div class="window glass active" style="max-width: 100%">
