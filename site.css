@@ -1,8 +1,6 @@
 /* Shared site styles */
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -15,60 +13,51 @@ body, a, li, ul, img, button, input, textarea, select {
   cursor: url('https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png'), auto !important;
 }
 
-/* Shared navigation menu */
-ul[role="menubar"] {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+a { text-decoration: none; }
+ul[role="menubar"] { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+ul[role="menubar"] li { display: inline-block; }
+ul[role="menubar"] a { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; color: black; border-radius: 2px; }
+ul[role="menubar"] a:hover { color: black; }
+ul[role="menubar"] img { vertical-align: middle; }
 
-ul[role="menubar"] li {
-  display: inline-block;
-}
-
-ul[role="menubar"] a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  color: black;
-  text-decoration: none;
-  border-radius: 2px;
-}
-
-ul[role="menubar"] a:hover {
-  color: black;
-}
-
-ul[role="menubar"] img {
-  vertical-align: middle;
-}
-
-/* Shared window layout and entrance animation */
-.window {
-  height: 100%;
-}
+.window { height: 100%; width: 100%; }
+.column.middle { display: flex; justify-content: center; margin: 1rem auto; max-width: 50%; }
 
 @keyframes popIn {
-  0% { transform: scale(0.85); opacity: 0; filter: blur(6px); }
+  0% { transform: scale(.85); opacity: 0; filter: blur(6px); }
   60% { transform: scale(1.03); opacity: 1; filter: blur(0); }
   100% { transform: scale(1); opacity: 1; filter: none; }
 }
+.pop { animation: popIn 550ms cubic-bezier(.2,.9,.3,1) both; }
+.pop.stagger { animation-delay: var(--delay, 0ms); }
 
-.pop {
-  animation: popIn 550ms cubic-bezier(.2, .9, .3, 1) both;
-}
+/* Projects and links buttons */
+:root { --colorShadeA: rgb(59,124,173); --colorShadeB: rgb(44,93,130); --colorShadeC: rgb(26,55,77); --colorShadeD: rgb(76,108,133); --colorShadeE: rgb(116,161,196); }
+.button-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 20px; text-align: center; }
+button { display: inline-block; outline: none; border: 0; font-size: 1.2rem; color: var(--colorShadeA); font-weight: 700; text-transform: uppercase; font-family: inherit; }
+button.big-button { padding: 1em 2em; border: 2px solid var(--colorShadeA); border-radius: 1em; background: var(--colorShadeE); transform-style: preserve-3d; transition: all 175ms cubic-bezier(0,0,1,1); position: relative; margin: .5em; }
+button.big-button::before { position: absolute; content: ""; width: 100%; height: 100%; top: 0; left: 0; background: var(--colorShadeC); border-radius: inherit; box-shadow: 0 0 0 2px var(--colorShadeB), 0 .75em 0 0 var(--colorShadeA); transform: translate3d(0,.75em,-1em); transition: all 175ms cubic-bezier(0,0,1,1); }
+button.big-button:hover { background: var(--colorShadeD); transform: translate(0,.375em); }
+button.big-button:active { transform: translate(0,.75em); }
+button.big-button:active::before { transform: translate3d(0,0,-1em); box-shadow: 0 0 0 2px var(--colorShadeB), 0 .25em 0 0 var(--colorShadeB); }
 
-.pop.stagger {
-  animation-delay: var(--delay, 0ms);
-}
+/* Certificates */
+.gallery { display: flex; justify-content: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
+.wrapper { display: inline-block; background: #01579B; box-shadow: 0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23); position: relative; margin: 10px; }
+.flip-container { display: inline-block; perspective: 1000px; vertical-align: top; }
+.wrapper:hover .flip-left { transform: rotateY(-180deg); }
+.wrapper:hover .flip-right { transform: rotateY(180deg); }
+.flip-container, .front, .back { width: 180px; height: 240px; }
+.flip { transition: .6s; transform-style: preserve-3d; position: relative; }
+.front, .back { backface-visibility: hidden; position: absolute; top: 0; left: 0; }
+.front { z-index: 2; background: #2196F3; transform: rotateY(0); overflow: hidden; }
+.front-left .circle { position: absolute; right: -50px; top: 50%; margin-top: -50px; }
+.front-right .circle { position: absolute; left: -50px; top: 50%; margin-top: -50px; }
+.circle { position: absolute; width: 100px; height: 100px; border-radius: 100%; background: #fff; box-shadow: 0 19px 38px rgba(0,0,0,.2), 0 15px 12px rgba(0,0,0,.12); }
+.back { background: rgb(220,220,220); transform: rotateY(180deg); overflow: hidden; }
+.back img { width: 360px; height: 240px; }
+.bottomleft { position: absolute; bottom: 8px; left: 12px; font-size: 20px; }
+.back-left img { position: absolute; left: 0; }
+.back-right img { position: absolute; right: 0; }
 
-@media (max-width: 900px) {
-  .column.middle {
-    max-width: 95%;
-  }
-}
+@media (max-width: 900px) { .column.middle { max-width: 95%; } }
