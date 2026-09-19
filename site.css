@@ -1,0 +1,74 @@
+/* Shared site styles */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://sadhost.neocities.org/images/tiles/water2.webp');
+  cursor: url('https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png'), auto !important;
+}
+
+body, a, li, ul, img, button, input, textarea, select {
+  cursor: url('https://win98icons.alexmeub.com/icons/png/mouse_ms-1.png'), auto !important;
+}
+
+/* Shared navigation menu */
+ul[role="menubar"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul[role="menubar"] li {
+  display: inline-block;
+}
+
+ul[role="menubar"] a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+ul[role="menubar"] a:hover {
+  color: black;
+}
+
+ul[role="menubar"] img {
+  vertical-align: middle;
+}
+
+/* Shared window layout and entrance animation */
+.window {
+  height: 100%;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.85); opacity: 0; filter: blur(6px); }
+  60% { transform: scale(1.03); opacity: 1; filter: blur(0); }
+  100% { transform: scale(1); opacity: 1; filter: none; }
+}
+
+.pop {
+  animation: popIn 550ms cubic-bezier(.2, .9, .3, 1) both;
+}
+
+.pop.stagger {
+  animation-delay: var(--delay, 0ms);
+}
+
+@media (max-width: 900px) {
+  .column.middle {
+    max-width: 95%;
+  }
+}
